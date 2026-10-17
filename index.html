@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HOT Tracker</title>
+<meta name="theme-color" content="#0e1015">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="HOT">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  html, body { margin: 0; height: 100%; background: #0e1015; overflow: hidden; }
+  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; padding-top: env(safe-area-inset-top); box-sizing: border-box; background: #0e1015; }
+  #carga { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #8a93a5; font: 500 14px system-ui, sans-serif; transition: opacity .3s; }
+  #carga img { width: 96px; height: 96px; border-radius: 22px; }
+</style>
+</head>
+<body>
+<div id="carga"><img src="icon-192.png" alt=""><div>Cargando datos del equipo…</div></div>
+<iframe id="app" src="https://script.google.com/macros/s/AKfycby5_6sPuIyh_lVXz2P-u0vfNYF23pXhNSFsnDDn1B_owhIIsKcKLfyoHQ35hrAGO7dI/exec" allow="clipboard-write"></iframe>
+<script>
+  document.getElementById('app').addEventListener('load', function () { var c = document.getElementById('carga'); c.style.opacity = 0; setTimeout(function () { c.remove(); }, 300); });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
+</script>
+</body>
+</html>
